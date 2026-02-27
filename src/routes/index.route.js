@@ -8,4 +8,4 @@ let router = Router()
 export default router
     .use("/author", authorRouter)
     .use("/book", bookRouter)
-    .use("/manager", managerRoute)
+    .use("/user", managerRoute)

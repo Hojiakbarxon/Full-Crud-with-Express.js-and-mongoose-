@@ -7,6 +7,7 @@ let userSchema = new mongoose.Schema({
     email: { type: String, unique: true },
     userName: { type: String, unique: true, required: true },
     hashedPassword: { type: String, required: true },
+    isActive: { type: Boolean, default: true },
     role: {
         type: String,
         enum: [

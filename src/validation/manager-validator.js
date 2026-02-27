@@ -26,6 +26,15 @@ class ManagerValidator{
 
         return manager.validate(data)
     }
+
+    sigin(data) {
+        let user = Joi.object({
+            userName : Joi.string().required(),
+            password : Joi.string().required()
+        })
+
+        return user.validate(data)
+    }
 }
 
 export default new ManagerValidator()

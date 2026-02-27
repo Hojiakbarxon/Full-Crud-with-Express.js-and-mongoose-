@@ -24,13 +24,11 @@ class MangerController extends BaseController {
         return successRes(res, newManager, 201)
     })
 
-    findAll = catchAsync(async (req, res) => {
-        let managers = await User.find({ role: Roles.MANAGER })
-        return successRes(res, managers)
-    })
 
     update = catchAsync(async (req, res) => {
         let id = req.params.id
+        await this._getById(id)
+        
         let { phoneNumber, email, userName, password } = req.body
         if (phoneNumber) {
             await this._isExistInUpdate({ phoneNumber }, id, `Phone number `)
