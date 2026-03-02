@@ -4,7 +4,7 @@ import { Roles, Gender } from "../enums/index.js";
 let userSchema = new mongoose.Schema({
     fullName: { type: String, required: true },
     phoneNumber: { type: String, unique: true },
-    email: { type: String, unique: true },
+    email: { type: String, unique: true, required: true},
     userName: { type: String, unique: true, required: true },
     hashedPassword: { type: String, required: true },
     isActive: { type: Boolean, default: true },

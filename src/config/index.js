@@ -13,5 +13,12 @@ export let envConfig = {
         ACCESS_TIME: String(process.env.ACCESS_TOKEN_TIME),
         REFRESH_KEY: String(process.env.REFRESH_TOKEN_KEY),
         REFRESH_TIME: String(process.env.REFRESH_TOKEN_TIME)
+    },
+
+    MAIL: {
+        USER: String(process.env.MAIL_USER),
+        HOST: String(process.env.MAIL_HOST),
+        PASS: String(process.env.MAIL_PASS),
+        PORT: Number(process.env.MAIL_PORT)
     }
 }

@@ -5,11 +5,12 @@ import Crypto from "../crypto/crypto.js"
 export async function createFounder() {
     try {
         let existedFounder = await User.findOne({ role: Roles.FOUNDER })
+        console.log(existedFounder)
         if (!existedFounder) {
             let founder = await User.create({
                 fullName: "Hojiakbarxon Olimxo`jayev",
                 phoneNumber: "+998930055678",
-                email: "hojiakbar@gmail.com",
+                email: envConfig.MAIL.USER,
                 userName: envConfig.FOUNDER.USERNAME,
                 hashedPassword: await Crypto.decode(envConfig.FOUNDER.PASSWORD),
                 role: Roles.FOUNDER,

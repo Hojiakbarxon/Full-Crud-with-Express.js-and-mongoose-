@@ -12,7 +12,7 @@ export class BaseController {
         return successRes(res, newModel, 201)
     })
 
-    findAll = catchAsync(async (req, res) => {
+    findAll = catchAsync(async (_req, res) => {
         let datas = await this.model.find().populate(this.relation)
         return successRes(res, datas)
     })

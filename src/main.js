@@ -9,8 +9,8 @@ import { ApiError } from "./utils/customError.js"
 
 let port = envConfig.PORT
 let app = express()
-app.use(cookieParser())
 app.use(express.json())
+app.use(cookieParser())
 
 connectDb()
 

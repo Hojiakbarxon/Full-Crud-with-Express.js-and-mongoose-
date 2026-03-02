@@ -21,6 +21,15 @@ class Token {
         })
         return refreshToken
     }
+    verifyAccess(token) {
+        let isMatch = jwt.verify(token, envConfig.TOKENS.ACCESS_KEY)
+        return isMatch
+    }
+    verifyRefresh(token) {
+        let isMatch = jwt.verify(token, envConfig.TOKENS.REFRESH_KEY)
+
+        return isMatch
+    }
 }
 
 export default new Token()
