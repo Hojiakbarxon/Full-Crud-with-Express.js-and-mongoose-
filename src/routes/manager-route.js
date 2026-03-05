@@ -12,5 +12,6 @@ export default router
     .delete("/:id", managerController.delete)
     .patch("/:id", validator(managerValidator.update), managerController.update)
     .post("/signin", validator(managerValidator.signin), authController.signin)
+    .post("/otp", validator(managerValidator.otp), authController.confirmOTP)
     .post("/token", authController.getAccessToken)
     .post("/signout", authController.signOut)

@@ -8,8 +8,10 @@ import cookieParser from "cookie-parser"
 import { ApiError } from "./utils/customError.js"
 
 let port = envConfig.PORT
+
 let app = express()
 app.use(express.json())
+
 app.use(cookieParser())
 
 connectDb()
@@ -17,8 +19,10 @@ connectDb()
 await createFounder()
 
 app.use("/api", router)
-app.all(/(.*)/, (req, res, next) => {
+app.all(/(.*)/, (_req, _res, next) => {
     next(new ApiError(`Url not found`, 404))
 })
+
 app.use(errorHandle)
+
 app.listen(port, () => console.log(`Server is running on port `, port))

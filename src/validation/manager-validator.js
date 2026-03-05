@@ -29,8 +29,16 @@ class ManagerValidator{
 
     signin(data) {
         let user = Joi.object({
-            userName : Joi.string().required(),
+            email : Joi.string().email().required(),
             password : Joi.string().required()
+        })
+
+        return user.validate(data)
+    }
+    otp(data){
+        let user = Joi.object({
+            email : Joi.string().email().required(),
+            otp : Joi.string().required()
         })
 
         return user.validate(data)

@@ -1,7 +1,7 @@
 import { ApiError } from "../utils/customError.js"
 
 export function validator(schema) {
-    return function (req, res, next) {
+    return function (req, _res, next) {
         let obj = schema(req.body)
         let { error } = obj
 
