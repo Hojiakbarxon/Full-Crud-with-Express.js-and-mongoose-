@@ -1,6 +1,6 @@
 import Joi from "joi";
 
-class ManagerValidator{
+class ManagerValidator {
     create(data) {
         let manager = Joi.object({
             fullName: Joi.string().required(),
@@ -26,19 +26,42 @@ class ManagerValidator{
 
         return manager.validate(data)
     }
+    updatePassword(data) {
+        let manager = Joi.object({
+            oldPassword: Joi.string().optional(),
+            newPassword: Joi.string().required()
+        })
+
+        return manager.validate(data)
+    }
 
     signin(data) {
         let user = Joi.object({
-            email : Joi.string().email().required(),
-            password : Joi.string().required()
+            email: Joi.string().email().required(),
+            password: Joi.string().required()
         })
 
         return user.validate(data)
     }
-    otp(data){
+    otp(data) {
         let user = Joi.object({
-            email : Joi.string().email().required(),
-            otp : Joi.string().required()
+            email: Joi.string().email().required(),
+            otp: Joi.string().required()
+        })
+
+        return user.validate(data)
+    }
+    resetPassword(data) {
+        let user = Joi.object({
+            email: Joi.string().email().required()
+        })
+        return user.validate(data)
+    }
+    confirmOtpForPassword(data) {
+        let user = Joi.object({
+            email: Joi.string().email().required(),
+            otp: Joi.string().required(),
+            newPassword : Joi.string().required()
         })
 
         return user.validate(data)

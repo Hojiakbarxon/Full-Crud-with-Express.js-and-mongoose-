@@ -1,14 +1,23 @@
 import { compare, hash } from "bcrypt";
+import { ApiError } from "../utils/customError.js";
 
-class Crypto{
+class Crypto {
     async decode(data) {
-        let hashedData = await hash(data, 7)
-        return hashedData
+        try {
+            let hashedData = await hash(data, 7)
+            return hashedData
+        } catch (error) {
+            throw new ApiError(`Something went wrong`, 500)
+        }
     }
 
     async encode(data, hashedData) {
-        let isMatch = await compare(data,hashedData)
-        return isMatch
+        try {
+            let isMatch = await compare(data, hashedData)
+            return isMatch
+        } catch (error) {
+            throw new ApiError(`Something went wrong`, 500)
+        }
     }
 }
 
